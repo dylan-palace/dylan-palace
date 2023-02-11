@@ -1,3 +1,4 @@
-Security analyst interested in all things git, python, javascript and football
-- Working on various project so watch this space :) 
-- If you're looking to collaborate feel free to reach out!
+Personal projects
+- Encryption: encryption.py and decryption.py - uses a custom base64 dictionary and one time pad logic to encrypt UTF-8 docs
+- Nmap scanner: Automating nmap tasks 
+- Coming: MFA brute force bypass
