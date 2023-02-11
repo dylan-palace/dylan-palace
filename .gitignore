@@ -1,0 +1,10 @@
+#git will ignore these files
+
+# DS_Store files don't need to be committed
+*.DS_Store
+
+# Ignore work in process
+/work_in_progress/*
+
+# Ignore local pycaches
+*/__pycache__/*
