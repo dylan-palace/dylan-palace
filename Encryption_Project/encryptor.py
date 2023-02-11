@@ -51,10 +51,10 @@ def main():
 
     if args.verbose:
         print(f'--- Generating key size {len(data)} ---')
-    if args.seed:
-        if args.verbose:
-            print(f'--- Key seed {args.seed} ---')
-        _key = functions.less_random_key(len(data))
+    #if args.seed:
+        #if args.verbose:
+            #print(f'--- Key seed {args.seed} ---')
+        #_key = functions.less_random_key(len(data))
     else:
         _key = functions.random_key(len(data))
     if args.verbose:
