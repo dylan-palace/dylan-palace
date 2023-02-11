@@ -20,7 +20,7 @@ cwd = os.getcwd()
 target_range = (validate_ip_address(f"{IP[0]}.{IP[1]}.{IP[2]}.0")) + "/24"
 print(target_range)
 
-# In built nmap scans, saved to specific file in CTF-Test dir
+# In built nmap scans, parse data 
 def run_scan(range, type):
     fileindex = range.replace(".", "-").replace("/", "-")
     if type == "ping":#Ping scan
