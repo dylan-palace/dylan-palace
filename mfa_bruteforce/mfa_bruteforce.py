@@ -23,7 +23,7 @@ def main():
 
     def send_http_post(uri, data):
         headers = {
-            'Host': ip,
+            'Host': args.ip,
             # 'Content-Length': '35',
             'Cache-Control': 'mac-age=0',
             'Upgrade-Insecure-Requests': '1',
@@ -36,7 +36,7 @@ def main():
             'Connection': 'close',
             }
 
-        response = requests.post(f'http:{ip}/{uri}}', headers=headers, data=data, verify=False, allow_redirects=True)
+        response = requests.post(f'http://{args.ip}/{uri}}', headers=headers, data=data, verify=False, allow_redirects=True)
         return response
 
     def format_token(token):
